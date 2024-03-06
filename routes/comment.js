@@ -3,6 +3,7 @@ const { commentPost,replyComment, getCommentReplies} = require('../controllers/c
 const commentRoute = express.Router();
 
 commentRoute.route('/:id').post(commentPost);
-commentRoute.route('/:postId/comment/:commentId').get(getCommentReplies).post(replyComment);
+commentRoute.route('/:postId/comment/:commentId').get(getCommentReplies)
+                                                 .post(replyComment);
 
 module.exports = commentRoute;

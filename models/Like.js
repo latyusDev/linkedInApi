@@ -1,19 +1,17 @@
 const mongoose = require('mongoose');
 
 const Like = new mongoose.Schema({
-    comment_id:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Comment'
-    },
-    user_id:{
+    user:{
         type:mongoose.Schema.Types.ObjectId,
         required:[true,'user id isrequired'],
         ref:'User'
     },
-    post_id:{
+    object:{
         type:mongoose.Schema.Types.ObjectId,
-        required:[true,'post id isrequired'],
-        ref:'Post'
+        refPath:'onModel',
+        required:true,
+        enum:['Post','Comment']
+        
     }
 },{
     timestamps:true
