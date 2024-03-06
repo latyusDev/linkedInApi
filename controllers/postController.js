@@ -25,7 +25,6 @@ const getSinglePost = async(req,res)=>{
     if(!post){
        return res.status(400).json({message:'post not found'})
     }
-    // const postWithComments = await post.populate('comments');
     return res.status(200).json(post)
 
 }

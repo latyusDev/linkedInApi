@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const CommentSchema = new mongoose.Schema({
+    content:{
+        type:String,
+        required:[true,'content is required']
+    },
     parent_id:{
         type:mongoose.Schema.Types.ObjectId,
        default:null
@@ -14,10 +18,10 @@ const CommentSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Post'
     },
-    content:{
-        type:String,
-        required:[true,'content is required']
-    }
+    likes:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Like',
+    }]
 },{
     timestamps:true
 })
