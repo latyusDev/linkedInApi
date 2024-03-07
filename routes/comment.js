@@ -4,7 +4,7 @@ const { likeComment } = require('../controllers/likeController');
 const commentRoute = express.Router();
 
 commentRoute.route('/:id').post(commentPost);//comment a post
-commentRoute.route('/:postId/comment/:commentId').get(getCommentReplies)//all nested comments 
+commentRoute.route('/:postId/comment/:commentId').get(getCommentReplies)//get all nested comments 
                                                  .post(replyComment);//reply a comment
 commentRoute.route('/:postId/comment/:commentId/like').post(likeComment)
 

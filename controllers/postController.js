@@ -12,7 +12,7 @@ const getPosts = async(req,res)=>{
     const posts = await Post.find().populate({
         path:'comments', 
         match:{parent_id:null}
-    });
+    }).populate('likes');
     return res.status(200).json(posts);
 }
 
@@ -21,7 +21,7 @@ const getSinglePost = async(req,res)=>{
     const post =  await Post.findById(req.params.id).populate({
         path:'comments',
         match:{parent_id:null}
-    });
+    }).populate('likes');;
     if(!post){
        return res.status(400).json({message:'post not found'})
     }

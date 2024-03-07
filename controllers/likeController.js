@@ -49,20 +49,8 @@ const likeComment = async(req,res)=>{
 }
 
 
-// const likeComment = async(req,res)=>{
-//     const commentId = req.params.commentId;
-//     const comment = await Comment.findById(commentId);
-//     const like = await Like.create({user:req.user._id,object:commentId,onModel:'Comment'});
-//     comment.likes.push(like._id)
-//     await comment.save();
-//     return res.status(200).json({comment});
-
-// }
-
 
 module.exports = {
     likePost,
-    // unLikePost,
     likeComment,
-    // unLikeComment
 }
