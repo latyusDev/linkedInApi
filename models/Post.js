@@ -5,6 +5,10 @@ const PostSchema = new mongoose.Schema({
         type:String,
         required:[true,'content is required']
     },
+    fileUrl:{
+        type:String,
+        required:[true,'image url is required']
+    },
     user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User',

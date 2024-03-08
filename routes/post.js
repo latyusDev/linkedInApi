@@ -5,8 +5,9 @@ const {
     updatePost,deletePost
 } = require('../controllers/postController');
 const { likePost } = require('../controllers/likeController');
+const uploadFile = require('../middlewares/uploadFileMiddleware');
 
-postRoutes.route('/').get(getPosts).post(storePost)
+postRoutes.route('/').get(getPosts).post(uploadFile.single('file'),storePost)
 postRoutes.route('/:id').get(getSinglePost)
                         .put(updatePost)
                         .delete(deletePost)

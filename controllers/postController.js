@@ -1,14 +1,13 @@
 const Post = require('../models/Post');
 
 const storePost = async(req,res)=>{
-    const {content} = req.body;
-
-    const post = await Post.create({content});
+    const {content} = req.body
+    const fileUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.originalname}`
+    const post = await Post.create({content,fileUrl});
     return res.status(200).json({post})
 }
 
 const getPosts = async(req,res)=>{
-    // const posts = await Post.find().populate('comments');
     const posts = await Post.find().populate({
         path:'comments', 
         match:{parent_id:null}
@@ -21,7 +20,7 @@ const getSinglePost = async(req,res)=>{
     const post =  await Post.findById(req.params.id).populate({
         path:'comments',
         match:{parent_id:null}
-    }).populate('likes');;
+    }).populate('likes');
     if(!post){
        return res.status(400).json({message:'post not found'})
     }
@@ -49,6 +48,7 @@ const deletePost = async(req,res)=>{
     return res.status(200).json({message:'post is deleted'})
 
 }
+
 
 module.exports = {
     storePost,

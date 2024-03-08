@@ -13,6 +13,7 @@ const commentPost = async(req,res)=>{
     await post.save();
     return res.status(201).json({comment});
 }
+
 const replyComment = async(req,res)=>{
     const {content} = req.body;
     const postId = req.params.postId;
@@ -26,6 +27,7 @@ const replyComment = async(req,res)=>{
     await post.save();
     return res.status(201).json({comment});
 }
+
 const getCommentReplies = async(req,res)=>{
     const commentId = req.params.commentId;
     if(!commentId){
